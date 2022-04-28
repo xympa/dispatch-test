@@ -6,9 +6,13 @@ on:
       name:
         required: true
         type: string
+      extra_message:
+        required: false
+        type: string
 
 env:
   NX_NAME: ${{ github.event.inputs.name}}
+  NX_EXTRA_MESSAGE: ${{ github.event.inputs.extra_message}}
 
 jobs:
   build:
