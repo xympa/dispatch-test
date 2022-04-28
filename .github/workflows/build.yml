@@ -6,8 +6,6 @@ on:
       name:
         required: true
         type: string
-env:
-  NX_NAME: ${{ inputs.name }}
 
 jobs:
   build:
@@ -15,7 +13,9 @@ jobs:
 
     steps:
       - name: say
-        run: echo $NX_NAME
+        run: echo Hi $NX_NAME
+        env:
+          NX_NAME: ${{ inputs.name }}
       #- uses: actions/checkout@v3
 #
 #- name: Setup yarn
