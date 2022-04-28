@@ -9,6 +9,7 @@ on:
         type: string
         default: Xympa
       extra_message:
+        description: Mensagem a enviar à pessoa
         required: false
         type: string
 
