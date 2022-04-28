@@ -13,9 +13,7 @@ jobs:
 
     steps:
       - name: say
-        run: echo Hi $NX_NAME
-        env:
-          NX_NAME: ${{ inputs.name }}
+        run: NX_NAME=${{ inputs.name }} echo Hi $NX_NAME
       #- uses: actions/checkout@v3
 #
 #- name: Setup yarn
