@@ -4,8 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       name:
+        description: Nome a apresentar
         required: true
         type: string
+        default: Xympa
       extra_message:
         required: false
         type: string
