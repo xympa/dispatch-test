@@ -12,30 +12,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: say
-        run: echo "Hi $NX_NAME"
-        env:
-          NX_NAME: ${{ github.event.inputs.name }}
-      #- uses: actions/checkout@v3
-#
-#- name: Setup yarn
-#  run: npm install -g yarn
-#
-#- name: Setup Nodejs with yarn caching
-#  uses: actions/setup-node@v3
-#  with:
-#    node-version: '16'
-#    cache: 'yarn'
-#    cache-dependency-path: 'yarn.lock'
-#
-#- name: Install dependencies
-#  run: yarn --frozen-lockfile
-#
-#- name: Install dependencies
-#  run: yarn build --prod
-#
-#- name: Archive build
-#  uses: actions/upload-artifact@v3
-#  with:
-#    name: cantanhede-build
-#    path: dist/apps/web
+      - uses: actions/checkout@v3
+
+      - name: Setup yarn
+        run: npm install -g yarn
+
+      - name: Setup Nodejs with yarn caching
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+          cache-dependency-path: 'yarn.lock'
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Install dependencies
+        run: yarn build --prod
+
+      - name: Archive build
+        uses: actions/upload-artifact@v3
+        with:
+          name: cantanhede-build
+          path: dist/apps/web
