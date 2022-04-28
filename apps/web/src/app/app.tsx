@@ -1,14 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.css';
-import NxWelcome from './nx-welcome';
 
 export function App() {
-  return (
-    <>
-      <NxWelcome title="web" />
-      <div />
-    </>
-  );
+  return <div>This is a welcome to {process.env['NX_NAME']}</div>;
 }
 
 export default App;

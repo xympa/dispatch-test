@@ -1,0 +1,39 @@
+name: Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        required: true
+        type: string
+env:
+  NX_NAME: ${{ inputs.name }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup yarn
+        run: npm install -g yarn
+
+      - name: Setup Nodejs with yarn caching
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+          cache-dependency-path: 'yarn.lock'
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Install dependencies
+        run: yarn build --prod
+
+      - name: Archive build
+        uses: actions/upload-artifact@v3
+        with:
+          name: cantanhede-build
+          path: dist/apps/web
